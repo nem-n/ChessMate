@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.chessn.controllers.HowToPlayController"
+      styleClass="dialog-root"
+      stylesheets="@../css/Dialogs.css">
+    
+    <!-- Title Bar -->
+    <HBox styleClass="title-bar">
+        <Text fx:id="titleText" styleClass="title-text" text="How to Play"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button fx:id="closeButton" styleClass="close-button" text="×"/>
+    </HBox>
+    
+    <!-- Content -->
+    <VBox styleClass="content">
+        <Text fx:id="introText" styleClass="intro-text" text="Chess is a two-player strategy game. Each player starts with 16 pieces:"/>
+        <Text fx:id="piecesText" styleClass="pieces-text" text="♔ King: Moves one square in any direction&#10;♕ Queen: Moves any number of squares in any direction&#10;♖ Rook: Moves any number of squares horizontally/vertically&#10;♗ Bishop: Moves any number of squares diagonally&#10;♘ Knight: Moves in L-shape (2+1 squares)&#10;♙ Pawn: Moves forward, captures diagonally"/>
+        <Text fx:id="goalText" styleClass="goal-text" text="Goal: Checkmate your opponent's king!"/>
+        <Text fx:id="howToPlayText" styleClass="intro-text" text="How to Play:"/>
+        <Text fx:id="controlsText" styleClass="pieces-text" text="• Click and drag pieces to move them&#10;• Valid moves are highlighted when you select a piece&#10;• Invalid moves are automatically prevented"/>
+        <Text fx:id="specialFeaturesText" styleClass="goal-text" text="Special Features:"/>
+        <Text fx:id="featuresText" styleClass="pieces-text" text="• Castling: Move king two squares toward rook&#10;• Pawn promotion: Choose piece when pawn reaches end&#10;• Game automatically detects checkmate/stalemate"/>
+    </VBox>
+    
+</VBox> 

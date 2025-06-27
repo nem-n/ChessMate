@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox fx:id="root" prefHeight="220.0" prefWidth="450.0" style="-fx-background-color: #fdfce8; -fx-border-color: #dbb6ee; -fx-border-width: 1;" stylesheets="@../css/victory.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chessn.controllers.VictoryController">
+   <children>
+      <HBox alignment="CENTER_LEFT" prefHeight="19.0" prefWidth="450.0" spacing="10" style="-fx-background-color: #fff0ff;">
+         <children>
+            <Text fx:id="titleText" fill="#864626" text="Game Over">
+               <font>
+                  <Font name="DynaPuff Regular" size="19.0" />
+               </font>
+            </Text>
+            <Region prefHeight="24.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+            <Button fx:id="closeButton" mnemonicParsing="false" onAction="#handleClose" style="-fx-text-fill: #734128; -fx-font-size: 20;" text="×">
+               <HBox.margin>
+                  <Insets bottom="1.0" left="0.0" right="1.0" top="0.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="-1.0" left="6.0" right="6.0" top="-3.0" />
+               </padding>
+            </Button>
+         </children>
+         <padding>
+            <Insets bottom="6.0" left="10.0" right="10.0" top="5.0" />
+         </padding>
+      </HBox>
+      <VBox alignment="CENTER" spacing="20">
+         <children>
+            <Text fx:id="dialogTitle" fill="#864626" text="Player 1 wins">
+               <font>
+                  <Font name="DynaPuff Regular" size="22.0" />
+               </font>
+            </Text>
+            <Text fx:id="victoryConditionText" fill="#734128" text="by checkmate.">
+               <font>
+                  <Font name="DynaPuff Regular" size="16.0" />
+               </font>
+            </Text>
+            <HBox fx:id="buttonBox" alignment="CENTER" spacing="10">
+               <children>
+                  <Button fx:id="newGameButton" mnemonicParsing="false" onAction="#handleNewGame" style="-fx-text-fill: #734128; -fx-background-radius: 5; -fx-border-radius: 5; -fx-cursor: hand;" text="New Game">
+                     <font>
+                        <Font name="DynaPuff Regular" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="mainMenuButton" mnemonicParsing="false" onAction="#handleMainMenu" style="-fx-text-fill: #734128; -fx-background-radius: 5; -fx-border-radius: 5; -fx-cursor: hand;" text="Exit Game">
+                     <font>
+                        <Font name="DynaPuff Regular" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="30.0" right="30.0" top="20.0" />
+         </padding>
+      </VBox>
+   </children>
+</VBox> 

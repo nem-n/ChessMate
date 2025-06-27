@@ -1,0 +1,57 @@
+.player-info-panel {
+    -fx-background-color: #fdfce8;
+    -fx-padding: 10px 20px;
+    -fx-spacing: 5px;
+}
+
+.player-row {
+    -fx-padding: 8px 15px;
+    -fx-background-color: #e6e6fa;
+    -fx-border-color: #9370db;
+    -fx-border-width: 1px;
+}
+
+.player-row.active {
+    -fx-background-color: #d8bfd8;
+    -fx-border-color: #7f4ca5;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(127, 76, 165, 0.3), 5, 0, 0, 2);
+}
+
+.player-name {
+    -fx-font-family: "DynaPuff";
+    -fx-font-size: 16px;
+    -fx-fill: #734128;
+    -fx-font-weight: bold;
+}
+
+.player-status {
+    -fx-font-family: "DynaPuff";
+    -fx-font-size: 14px;
+    -fx-fill: #864626;
+}
+
+.player-status.check {
+    -fx-fill: #ff4444;
+    -fx-font-weight: bold;
+}
+
+.player-status.checkmate {
+    -fx-fill: #ff0000;
+    -fx-font-weight: bold;
+} 
+
+.captured-piece-symbol {
+    -fx-font-size: 20px;
+    -fx-fill: #391e10;
+    -fx-padding: 0 2 0 2;
+    -fx-font-family: 'DynaPuff', 'Segoe UI Symbol', 'Arial Unicode MS', sans-serif;
+}
+
+.captured-piece-count {
+    -fx-font-size: 12px;
+    -fx-fill: #555;
+    -fx-padding: 0 8 0 0;
+    -fx-translate-y: 7;
+    -fx-font-family: 'DynaPuff', 'Segoe UI', sans-serif;
+} 

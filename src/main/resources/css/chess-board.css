@@ -1,0 +1,150 @@
+/* Chess Board Animations and Effects */
+
+/* Piece transition animations */
+.chess-piece {
+    -fx-transition: all 0.3s ease-in-out;
+}
+
+/* Current player's pieces - interactive with hover effects */
+.current-player-piece {
+    -fx-cursor: hand;
+}
+
+.current-player-piece:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0, 0, 2);
+}
+
+/* Opponent's pieces - no interaction, no hover effects */
+.opponent-piece {
+    -fx-cursor: default;
+}
+
+.opponent-piece:hover {
+    -fx-scale-x: 1.0;
+    -fx-scale-y: 1.0;
+    -fx-effect: none;
+}
+
+/* Dragging piece styles */
+.chess-piece.dragging {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 3);
+    -fx-scale-x: 1.2;
+    -fx-scale-y: 1.2;
+    -fx-opacity: 0.9;
+}
+
+/* Smooth piece movement animation */
+.piece-moving {
+    -fx-transition: translate-x 0.4s ease-out, translate-y 0.4s ease-out;
+}
+
+/* Square hover effects */
+.chess-square {
+    -fx-transition: all 0.2s ease-in-out;
+}
+
+.chess-square:hover {
+    -fx-opacity: 0.8;
+}
+
+/* Highlight for the most recent move */
+.last-move {
+    -fx-stroke: #ffe066;
+    -fx-stroke-width: 2;
+    -fx-stroke-type: inside;
+    -fx-effect: dropshadow(gaussian, #ffe06688, 6, 0, 0, 2);
+    -fx-transition: all 0.2s ease-in-out;
+}
+
+/* Valid move highlight animation */
+.valid-move {
+    -fx-stroke: #7f4ca5;
+    -fx-stroke-width: 2;
+    -fx-stroke-type: inside;
+    -fx-transition: all 0.2s ease-in-out;
+}
+
+.valid-move:hover {
+    -fx-stroke-width: 3;
+    -fx-effect: dropshadow(gaussian, rgba(127, 76, 165, 0.5), 3, 0, 0, 1);
+}
+
+/* Capture highlight animation */
+.valid-capture {
+    -fx-stroke: #111111;
+    -fx-stroke-width: 2;
+    -fx-stroke-type: inside;
+    -fx-transition: all 0.2s ease-in-out;
+}
+
+.valid-capture:hover {
+    -fx-stroke-width: 3;
+    -fx-effect: dropshadow(gaussian, rgba(17, 17, 17, 0.5), 3, 0, 0, 1);
+}
+
+/* Selected piece highlight */
+.selected-piece {
+    -fx-stroke: #7f4ca5;
+    -fx-stroke-width: 3;
+    -fx-stroke-type: inside;
+    -fx-effect: dropshadow(gaussian, rgba(127, 76, 165, 0.6), 4, 0, 0, 2);
+    -fx-transition: all 0.2s ease-in-out;
+}
+
+/* Check highlight animation */
+.check-highlight {
+    -fx-stroke: #ff4444;
+    -fx-stroke-width: 2;
+    -fx-stroke-type: inside;
+    -fx-transition: all 0.3s ease-in-out;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { -fx-stroke-width: 2; -fx-opacity: 1; }
+    50% { -fx-stroke-width: 3; -fx-opacity: 0.8; }
+    100% { -fx-stroke-width: 2; -fx-opacity: 1; }
+}
+
+/* Piece capture animation */
+.piece-captured {
+    -fx-transition: all 0.3s ease-in-out;
+    animation: capture 0.3s ease-out;
+}
+
+@keyframes capture {
+    0% { -fx-scale-x: 1; -fx-scale-y: 1; -fx-opacity: 1; }
+    50% { -fx-scale-x: 1.2; -fx-scale-y: 1.2; -fx-opacity: 0.5; }
+    100% { -fx-scale-x: 0; -fx-scale-y: 0; -fx-opacity: 0; }
+}
+
+/* New piece appearance animation */
+.piece-new {
+    -fx-transition: all 0.3s ease-in-out;
+    animation: appear 0.3s ease-out;
+}
+
+@keyframes appear {
+    0% { -fx-scale-x: 0; -fx-scale-y: 0; -fx-opacity: 0; }
+    50% { -fx-scale-x: 1.1; -fx-scale-y: 1.1; -fx-opacity: 0.8; }
+    100% { -fx-scale-x: 1; -fx-scale-y: 1; -fx-opacity: 1; }
+}
+
+/* Board square styling */
+.board-square {
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-transition: all 0.2s ease-in-out;
+}
+
+.board-square:hover {
+    -fx-border-color: rgba(127, 76, 165, 0.3);
+    -fx-border-width: 1;
+}
+
+/* Smooth board updates */
+.chess-board {
+    -fx-transition: all 0.3s ease-in-out;
+} 

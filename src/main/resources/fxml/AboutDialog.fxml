@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.chessn.controllers.AboutController"
+      styleClass="dialog-root"
+      stylesheets="@../css/Dialogs.css">
+    
+    <!-- Title Bar -->
+    <HBox styleClass="title-bar">
+        <Text fx:id="titleText" styleClass="title-text" text="About ChessMate"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button fx:id="closeButton" styleClass="close-button" text="×"/>
+    </HBox>
+    
+    <!-- Content -->
+    <VBox styleClass="content">
+        <Text fx:id="appTitle" styleClass="app-title" text="ChessMate"/>
+        <Text fx:id="versionText" styleClass="version-text" text="Version 1.0"/>
+        <Text fx:id="descriptionText" styleClass="description-text" text="A chess game application built with JavaFX.&#10;Features all standard chess rules including castling, pawn promotion, and endgame detection.&#10;Beautiful custom UI, responsive design, and intelligent game state management."/>
+    </VBox>
+    
+</VBox> 

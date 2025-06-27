@@ -1,0 +1,120 @@
+.dialog-root {
+    -fx-background-color: #fdfce8;
+    -fx-border-color: #dbb6ee;
+    -fx-border-width: 1px;
+}
+
+.title-bar {
+    -fx-background-color: #fff0ff;
+    -fx-padding: 5px 10px 6px 10px;
+    -fx-alignment: center-left;
+}
+
+.title-text {
+    -fx-font-family: "DynaPuff";
+    -fx-font-size: 20px;
+    -fx-fill: #864626;
+}
+
+.close-button {
+    -fx-background-color: #dbb6ee;
+    -fx-text-fill: #734128;
+    -fx-font-size: 20px;
+    -fx-padding: -3px 6px -1px 6px;
+    -fx-cursor: hand;
+}
+
+.close-button:hover {
+    -fx-background-color: #c4a7d4;
+}
+
+.content {
+    -fx-padding: 20px 30px 20px 30px;
+    -fx-spacing: 10px;
+    -fx-alignment: center-left;
+}
+
+.intro-text {
+    -fx-font-family: "DynaPuff";
+    -fx-font-size: 14px;
+    -fx-fill: #734128;
+}
+
+.pieces-text {
+    -fx-font-family: "DynaPuff";
+    -fx-font-size: 12px;
+    -fx-fill: #734128;
+}
+
+.goal-text {
+    -fx-font-family: "DynaPuff";
+    -fx-font-size: 14px;
+    -fx-fill: #864626;
+}
+
+.app-title {
+    -fx-font-family: "DynaPuff";
+    -fx-font-size: 24px;
+    -fx-fill: #864626;
+    -fx-alignment: center;
+}
+
+.version-text {
+    -fx-font-family: "DynaPuff";
+    -fx-font-size: 14px;
+    -fx-fill: #734128;
+    -fx-alignment: center;
+}
+
+.description-text {
+    -fx-font-family: "DynaPuff";
+    -fx-font-size: 12px;
+    -fx-fill: #734128;
+    -fx-alignment: center;
+}
+
+.dialog-title {
+    -fx-font-family: "DynaPuff";
+    -fx-font-size: 22px;
+    -fx-fill: #864626;
+}
+
+.dialog-label {
+    -fx-font-family: "DynaPuff";
+    -fx-font-size: 16px;
+    -fx-fill: #734128;
+}
+
+.radio-button .text {
+    -fx-font-family: "DynaPuff";
+    -fx-font-size: 14px;
+    -fx-fill: #391e10;
+}
+
+.radio-button .radio {
+    -fx-border-width: 2px;
+    -fx-border-color: #dbb6ee;
+    -fx-background-color: #fdfce8;
+    -fx-border-radius: 15px;
+    -fx-padding: 4px;
+}
+
+.radio-button:selected .radio .dot {
+    -fx-background-color: #7f4ca5;
+    -fx-background-insets: 0;
+}
+
+.dialog-button {
+    -fx-background-color: #dbb6ee;
+    -fx-text-fill: #734128;
+    -fx-font-family: "DynaPuff";
+    -fx-font-size: 14px;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-padding: 8px 16px;
+    -fx-cursor: hand;
+}
+
+.dialog-button:hover {
+    -fx-background-color: #c8a0e0;
+} 

@@ -1,0 +1,61 @@
+/* Player Names Dialog Button Hover Effects */
+
+/* Main buttons */
+#startButton,
+#backButton {
+    -fx-background-color: #dbb6ee;
+}
+
+#startButton:hover,
+#backButton:hover {
+    -fx-background-color: #c8a0e0;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 3, 0, 0, 1);
+}
+
+#startButton:pressed,
+#backButton:pressed {
+    -fx-background-color: #b894d8;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 2, 0, 0, 0);
+}
+
+/* Close button */
+#closeButton {
+    -fx-background-color: #dbb6ee;
+}
+
+#closeButton:hover {
+    -fx-background-color: #ff6b6b;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 2, 0, 0, 1);
+}
+
+#closeButton:pressed {
+    -fx-background-color: #ff5252;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 1, 0, 0, 0);
+}
+
+/* TextField styling */
+#whiteField,
+#blackField {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #dbb6ee;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 8 12;
+    -fx-text-fill: #734128;
+    -fx-prompt-text-fill: #a0a0a0;
+}
+
+#whiteField:focused,
+#blackField:focused {
+    -fx-border-color: #c8a0e0;
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(gaussian, rgba(219, 182, 238, 0.3), 3, 0, 0, 1);
+}
+
+#whiteField:hover,
+#blackField:hover {
+    -fx-border-color: #c8a0e0;
+    -fx-background-color: #fefefe;
+    -fx-effect: dropshadow(gaussian, rgba(200, 160, 224, 0.4), 4, 0, 0, 2);
+} 

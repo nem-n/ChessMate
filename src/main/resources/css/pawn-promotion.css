@@ -1,0 +1,40 @@
+/* Pawn Promotion Dialog Button Hover Effects */
+
+/* Piece buttons */
+#queenButton,
+#rookButton,
+#bishopButton,
+#knightButton {
+    -fx-background-color: #dbb6ee;
+}
+
+#queenButton:hover,
+#rookButton:hover,
+#bishopButton:hover,
+#knightButton:hover {
+    -fx-background-color: #c8a0e0;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 3, 0, 0, 1);
+}
+
+#queenButton:pressed,
+#rookButton:pressed,
+#bishopButton:pressed,
+#knightButton:pressed {
+    -fx-background-color: #b894d8;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 2, 0, 0, 0);
+}
+
+/* Close button */
+#closeButton {
+    -fx-background-color: #dbb6ee;
+}
+
+#closeButton:hover {
+    -fx-background-color: #ff6b6b;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 2, 0, 0, 1);
+}
+
+#closeButton:pressed {
+    -fx-background-color: #ff5252;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 1, 0, 0, 0);
+} 

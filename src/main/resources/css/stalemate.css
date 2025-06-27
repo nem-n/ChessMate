@@ -1,0 +1,34 @@
+/* Stalemate Popup Button Hover Effects */
+
+/* Main buttons */
+#newGameButton,
+#mainMenuButton {
+    -fx-background-color: #dbb6ee;
+}
+
+#newGameButton:hover,
+#mainMenuButton:hover {
+    -fx-background-color: #c8a0e0;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 3, 0, 0, 1);
+}
+
+#newGameButton:pressed,
+#mainMenuButton:pressed {
+    -fx-background-color: #b894d8;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 2, 0, 0, 0);
+}
+
+/* Close button */
+#closeButton {
+    -fx-background-color: #dbb6ee;
+}
+
+#closeButton:hover {
+    -fx-background-color: #ff6b6b;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 2, 0, 0, 1);
+}
+
+#closeButton:pressed {
+    -fx-background-color: #ff5252;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 1, 0, 0, 0);
+} 

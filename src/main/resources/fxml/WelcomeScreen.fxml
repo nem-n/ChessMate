@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox fx:id="root" alignment="CENTER" prefHeight="264.0" prefWidth="497.0" style="-fx-background-color: #fdfce8; -fx-border-color: #dbb6ee; -fx-border-width: 1;" stylesheets="@../css/welcome.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chessn.controllers.WelcomeController">
+   <children>
+      <HBox alignment="CENTER_LEFT" prefHeight="19.0" prefWidth="558.0" spacing="10" style="-fx-background-color: #fff0ff;">
+         <children>
+            <Text fx:id="titleText" fill="#864626" text="ChessMate">
+               <font>
+                  <Font name="DynaPuff Regular" size="19.0" />
+               </font>
+            </Text>
+            <Region prefHeight="24.0" prefWidth="242.0" HBox.hgrow="ALWAYS" />
+            <Button fx:id="minimizeButton" mnemonicParsing="false" onAction="#handleMinimize" style="-fx-text-fill: #734128; -fx-font-size: 22;" text="–">
+               <padding>
+                  <Insets bottom="-2.0" left="7.0" right="7.0" top="-4.0" />
+               </padding>
+               <HBox.margin>
+                  <Insets bottom="1.0" right="-5.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="resizeButton" mnemonicParsing="false" onAction="#handleResize" style="-fx-text-fill: #734128; -fx-font-size: 17;" text="❐">
+               <HBox.margin>
+                  <Insets bottom="1.0" right="-5.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="0.0" left="4.0" right="5.0" top="0.0" />
+               </padding>
+            </Button>
+            <Button fx:id="closeButton" mnemonicParsing="false" onAction="#handleClose" style="-fx-text-fill: #734128; -fx-font-size: 20;" text="×">
+               <HBox.margin>
+                  <Insets bottom="1.0" left="0.0" right="1.0" top="0.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="-1.0" left="6.0" right="6.0" top="-3.0" />
+               </padding>
+            </Button>
+         </children>
+         <padding>
+            <Insets bottom="6.0" left="10.0" right="10.0" top="5.0" />
+         </padding>
+      </HBox>
+      <Region VBox.vgrow="ALWAYS" />
+      <VBox alignment="CENTER" spacing="15" maxWidth="500" maxHeight="400">
+         <children>
+            <Text fx:id="welcomeText" fill="#864626" text="Welcome to ChessMate!">
+               <font>
+                  <Font name="DynaPuff Regular" size="26.0" />
+               </font>
+            </Text>
+            <Button fx:id="startAIButton" mnemonicParsing="false" onAction="#handleStartAI" style="-fx-text-fill: #734128; -fx-background-radius: 5; -fx-border-radius: 5; -fx-cursor: hand;" text="Play vs. Computer">
+               <font>
+                  <Font name="DynaPuff Regular" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="startNewGameButton" mnemonicParsing="false" onAction="#handleStartNewGame" style="-fx-text-fill: #734128; -fx-background-radius: 5; -fx-border-radius: 5; -fx-cursor: hand;" text="Pass n Play" textFill="#7c454594">
+               <font>
+                  <Font name="DynaPuff Regular" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="howToPlayButton" mnemonicParsing="false" onAction="#handleHowToPlay" style="-fx-text-fill: #734128; -fx-background-radius: 5; -fx-border-radius: 5; -fx-cursor: hand;" text="How to Play">
+               <font>
+                  <Font name="DynaPuff Regular" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="aboutButton" mnemonicParsing="false" onAction="#handleAbout" style="-fx-text-fill: #734128; -fx-background-radius: 5; -fx-border-radius: 5; -fx-cursor: hand;" text="About">
+               <font>
+                  <Font name="DynaPuff Regular" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="exitButton" mnemonicParsing="false" onAction="#handleExit" style="-fx-text-fill: #734128; -fx-background-radius: 5; -fx-border-radius: 5; -fx-cursor: hand;" text="Exit">
+               <font>
+                  <Font name="DynaPuff Regular" size="14.0" />
+               </font>
+            </Button>
+         </children>
+         <padding>
+            <Insets bottom="30.0" left="40.0" right="40.0" top="30.0" />
+         </padding>
+      </VBox>
+      <Region VBox.vgrow="ALWAYS" />
+   </children>
+</VBox>
