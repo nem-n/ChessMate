@@ -9,7 +9,6 @@ ChessMate is a modern, feature-rich chess game built with JavaFX. It offers a be
 - Full chess rules: pawn promotion, castling, en passant, and more.
 - Move history with undo/redo and captured pieces display.
 - Endgame detection: victory and stalemate popups.
-- Built-in help and about dialogs.
 
 ## Installation
 
