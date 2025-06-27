@@ -4,7 +4,7 @@ ChessMate is a modern, feature-rich chess game built with JavaFX. It offers a be
 
 ## Features
 
-- Play chess against another human or the Stockfish AI.
+- Play chess against another human (Pass n Play) or the Stockfish AI.
 - Modern, animated JavaFX interface with custom themes.
 - Full chess rules: pawn promotion, castling, en passant, and more.
 - Move history with undo/redo and captured pieces display.
