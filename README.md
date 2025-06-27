@@ -1,4 +1,4 @@
-# ChessMate — A Chess Game Application
+# ♟ChessMate — A Chess Game Application
 
 ChessMate is a modern, feature-rich chess game built with JavaFX. It offers a beautiful user interface and a powerful AI opponent powered by the Stockfish chess engine.
 
