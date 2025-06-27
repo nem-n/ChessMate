@@ -13,7 +13,7 @@ public class Bishop extends Piece {
     
     @Override
     public boolean isValidMove(int toRow, int toCol) {
-        // Calculate the differences
+        // Calculate differences
         int rowDiff = Math.abs(toRow - currentRow);
         int colDiff = Math.abs(toCol - currentCol);
         

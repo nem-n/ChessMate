@@ -22,10 +22,10 @@ public class King extends Piece {
         int rowDiff = Math.abs(toRow - currentRow);
         int colDiff = Math.abs(toCol - currentCol);
         
-        // Normal king move: can move one square in any direction
+        // move one square in any direction
         boolean normalMove = rowDiff <= 1 && colDiff <= 1 && (rowDiff > 0 || colDiff > 0);
         
-        // Castling move: two squares horizontally from starting position
+        // Castling two squares horizontally from starting position
         boolean castlingMove = !hasMoved && rowDiff == 0 && Math.abs(toCol - currentCol) == 2;
         
         return normalMove || castlingMove;

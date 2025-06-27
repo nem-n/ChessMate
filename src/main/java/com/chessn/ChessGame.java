@@ -3,8 +3,8 @@ package com.chessn;
 public class ChessGame {
     private Piece[][] board;
     private boolean isWhiteTurn = true;
-    private int selectedPieceRow = -1; // Keep selected piece state here for simplicity for now
-    private int selectedPieceCol = -1; // Keep selected piece state here for simplicity for now
+    private int selectedPieceRow = -1; 
+    private int selectedPieceCol = -1; 
     private java.util.List<Piece> whiteCaptured = new java.util.ArrayList<>();
     private java.util.List<Piece> blackCaptured = new java.util.ArrayList<>();
     private java.util.List<Move> moveHistory = new java.util.ArrayList<>();
@@ -13,7 +13,6 @@ public class ChessGame {
     private int fullmoveNumber = 1;
     private String enPassantTarget = "-";
 
-    // Constructor
     public ChessGame() {
         board = new Piece[8][8];
         setupBoard();
@@ -38,18 +37,13 @@ public class ChessGame {
         enPassantTarget = "-";
     }
 
-    /**
-     * Initialize the chess board with all pieces in their starting positions.
-     */
     private void setupBoard() {
-        // Clear the board first
         for (int row = 0; row < 8; row++) {
             for (int col = 0; col < 8; col++) {
                 board[row][col] = null;
             }
         }
 
-        // Set up black pieces
         board[0][0] = new Rook(false, 0, 0);      // Black Rook
         board[0][1] = new Knight(false, 0, 1);    // Black Knight
         board[0][2] = new Bishop(false, 0, 2);    // Black Bishop
@@ -59,12 +53,10 @@ public class ChessGame {
         board[0][6] = new Knight(false, 0, 6);    // Black Knight
         board[0][7] = new Rook(false, 0, 7);      // Black Rook
 
-        // Set up black pawns
         for (int col = 0; col < 8; col++) {
             board[1][col] = new Pawn(false, 1, col);
         }
 
-        // Set up white pieces
         board[7][0] = new Rook(true, 7, 0);      // White Rook
         board[7][1] = new Knight(true, 7, 1);    // White Knight
         board[7][2] = new Bishop(true, 7, 2);    // White Bishop
@@ -74,29 +66,22 @@ public class ChessGame {
         board[7][6] = new Knight(true, 7, 6);    // White Knight
         board[7][7] = new Rook(true, 7, 7);      // White Rook
 
-        // Set up white pawns
         for (int col = 0; col < 8; col++) {
             board[6][col] = new Pawn(true, 6, col);
         }
     }
 
-    /**
-     * Attempt to move a piece from one position to another.
-     * Returns true if the move was successful.
-     */
+
     public boolean makeMove(int fromRow, int fromCol, int toRow, int toCol) {
         Piece movingPiece = board[fromRow][fromCol];
         Piece targetPiece = board[toRow][toCol];
 
-        // Basic move validation
         if (movingPiece == null) {
-            return false;  // No piece to move
+            return false; 
         }
 
-        // Check if it's the correct player's turn
         if (movingPiece.isWhite() != isWhiteTurn) {
-            return false;  // Wrong player's turn
-        }
+            return false; }
 
         // Save FEN before move
         String fenBefore = toFEN();
@@ -116,47 +101,39 @@ public class ChessGame {
             return true;
         }
 
-        // Check if this is a capture attempt
         if (targetPiece != null) {
             if (!movingPiece.canCapture(targetPiece)) {
-                return false;  // Invalid capture
+                return false;  
             }
-            // Track captured piece
             if (movingPiece.isWhite()) {
                 blackCaptured.add(targetPiece);
             } else {
                 whiteCaptured.add(targetPiece);
             }
         } else {
-            // Normal move validation
             if (!movingPiece.isValidMove(toRow, toCol)) {
-                return false;  // Invalid move
+                return false; 
             }
         }
 
-        // Check if path is clear (except for Knights)
         if (!(movingPiece instanceof Knight)) {
             if (!isPathClear(fromRow, fromCol, toRow, toCol)) {
                 return false;
             }
         }
 
-        // Check if this move would leave/put the king in check
         if (wouldBeInCheck(fromRow, fromCol, toRow, toCol)) {
-            return false;  // Can't make a move that puts/leaves your king in check
+            return false;  
         }
 
-        // Check for pawn promotion (before move)
         if (movingPiece instanceof Pawn && (toRow == 0 || toRow == 7)) {
             isPromotion = true;
         }
 
-        // Execute the move
         board[toRow][toCol] = movingPiece;
         board[fromRow][fromCol] = null;
         movingPiece.setPosition(toRow, toCol);
 
-        // Update piece's move status
         if (movingPiece instanceof Pawn) {
             ((Pawn) movingPiece).moved();
         } else if (movingPiece instanceof King) {
@@ -166,7 +143,6 @@ public class ChessGame {
         }
 
         // Save FEN after move
-        // Update halfmove clock and fullmove number
         if (movingPiece instanceof Pawn || targetPiece != null) {
             halfmoveClock = 0;
         } else {
@@ -175,7 +151,7 @@ public class ChessGame {
         if (!isWhiteTurn) {
             fullmoveNumber++;
         }
-        // En passant target square (basic version)
+        // En passant target square 
         enPassantTarget = "-";
         if (movingPiece instanceof Pawn && Math.abs(toRow - fromRow) == 2) {
             int epRow = (fromRow + toRow) / 2;
@@ -196,18 +172,15 @@ public class ChessGame {
      * Used for all pieces except Knights.
      */
     public boolean isPathClear(int fromRow, int fromCol, int toRow, int toCol) {
-        // Get the direction of movement
         int rowDirection = Integer.compare(toRow - fromRow, 0);  // -1 for up, 1 for down, 0 for same row
         int colDirection = Integer.compare(toCol - fromCol, 0);  // -1 for left, 1 for right, 0 for same column
 
-        // Start checking from the square after the start position
         int currentRow = fromRow + rowDirection;
         int currentCol = fromCol + colDirection;
 
-        // Check each square until we reach the destination
         while (currentRow != toRow || currentCol != toCol) {
             if (board[currentRow][currentCol] != null) {
-                return false;  // There's a piece in the way
+                return false; 
             }
             currentRow += rowDirection;
             currentCol += colDirection;
@@ -228,23 +201,18 @@ public class ChessGame {
                 }
             }
         }
-        return null; // Should never happen in a valid game
+        return null; 
     }
 
-    /**
-     * Check if a king is in check
-     */
+   
     public boolean isInCheck(boolean isWhiteKing) {
-        // Find the king's position
         int[] kingPos = findKing(isWhiteKing);
         if (kingPos == null) return false;
 
-        // Check if any opponent's piece can capture the king
         for (int row = 0; row < 8; row++) {
             for (int col = 0; col < 8; col++) {
                 Piece piece = board[row][col];
                 if (piece != null && piece.isWhite() != isWhiteKing) {
-                    // Check if this piece can capture the king
                     if (piece.canCapture(board[kingPos[0]][kingPos[1]]) &&
                         (piece instanceof Knight || isPathClear(row, col, kingPos[0], kingPos[1]))) {
                         return true;
@@ -255,84 +223,60 @@ public class ChessGame {
         return false;
     }
 
-    /**
-     * Test if a move would leave the moving player's king in check
-     */
+ 
     public boolean wouldBeInCheck(int fromRow, int fromCol, int toRow, int toCol) {
-        // Store current board state
         Piece movingPiece = board[fromRow][fromCol];
         Piece capturedPiece = board[toRow][toCol];
 
-        // Make the move temporarily
         board[toRow][toCol] = movingPiece;
         board[fromRow][fromCol] = null;
-        movingPiece.setPosition(toRow, toCol);  // Update piece's position temporarily
+        movingPiece.setPosition(toRow, toCol);  
 
-        // Check if the move puts/leaves the king in check
         boolean inCheck = isInCheck(movingPiece.isWhite());
 
-        // Restore the board state
         board[fromRow][fromCol] = movingPiece;
         board[toRow][toCol] = capturedPiece;
-        movingPiece.setPosition(fromRow, fromCol);  // Restore piece's original position
-
+        movingPiece.setPosition(fromRow, fromCol);  
         return inCheck;
     }
 
-    /**
-     * Check if the specified player has any legal moves available.
-     * This method iterates through all of the player's pieces and all possible
-     * squares to see if any move is valid and does not leave the king in check.
-     */
+ 
     public boolean hasLegalMoves(boolean isWhitePlayer) {
-        // Try every possible move for every piece of the same color
         for (int fromRow = 0; fromRow < 8; fromRow++) {
             for (int fromCol = 0; fromCol < 8; fromCol++) {
                 Piece piece = board[fromRow][fromCol];
-                // Skip empty squares and opponent's pieces
                 if (piece == null || piece.isWhite() != isWhitePlayer) {
                     continue;
                 }
 
-                // Try moving to every square on the board
                 for (int toRow = 0; toRow < 8; toRow++) {
                     for (int toCol = 0; toCol < 8; toCol++) {
-                        // Skip the current position
                         if (fromRow == toRow && fromCol == toCol) {
                             continue;
                         }
 
-                        // Check if this is a valid move
                         Piece targetPiece = board[toRow][toCol];
                         boolean isValidMove = false;
 
                         if (targetPiece == null) {
-                            // Normal move
                             isValidMove = piece.isValidMove(toRow, toCol) &&
                                         (piece instanceof Knight || isPathClear(fromRow, fromCol, toRow, toCol));
                         } else if (targetPiece.isWhite() != isWhitePlayer) {
-                            // Capture move
                             isValidMove = piece.canCapture(targetPiece) &&
                                         (piece instanceof Knight || isPathClear(fromRow, fromCol, toRow, toCol));
                         }
 
-                        // If it's a valid move, check if it gets us out of check
                         if (isValidMove && !wouldBeInCheck(fromRow, fromCol, toRow, toCol)) {
-                            return true;  // Found a legal move
+                            return true;  
                         }
                     }
                 }
             }
         }
-        // If we get here, no legal moves were found
         return false;
     }
 
-    /**
-     * Check if a king is in checkmate
-     */
     public boolean isInCheckmate(boolean isWhiteKing) {
-        // First, check if the king is in check
         if (!isInCheck(isWhiteKing)) {
             return false;
         }
@@ -340,40 +284,28 @@ public class ChessGame {
         return !hasLegalMoves(isWhiteKing);
     }
 
-    /**
-     * Check if a king is in stalemate. Stalemate occurs when a player has no legal moves
-     * but their king is NOT in check.
-     */
     public boolean isStalemate(boolean isWhitePlayer) {
         return !isInCheck(isWhitePlayer) && !hasLegalMoves(isWhitePlayer);
     }
 
-    /**
-     * Check if castling is valid
-     */
     public boolean isValidCastling(int fromRow, int fromCol, int toRow, int toCol) {
-        // Must be a king
         Piece king = board[fromRow][fromCol];
         if (!(king instanceof King) || ((King)king).getHasMoved()) {
             return false;
         }
 
-        // Must be moving horizontally in the same row
         if (fromRow != toRow || Math.abs(toCol - fromCol) != 2) {
             return false;
         }
 
-        // Determine if it's kingside or queenside castling
         boolean isKingside = toCol > fromCol;
         int rookCol = isKingside ? 7 : 0;
 
-        // Check if rook is in place and hasn't moved
         Piece rook = board[fromRow][rookCol];
         if (!(rook instanceof Rook) || ((Rook)rook).getHasMoved()) {
             return false;
         }
 
-        // Check if path is clear
         int step = isKingside ? 1 : -1;
         for (int col = fromCol + step; isKingside ? col < rookCol : col > rookCol; col += step) {
             if (board[fromRow][col] != null) {
@@ -381,12 +313,10 @@ public class ChessGame {
             }
         }
 
-        // Check if king is in check or passes through check
         if (isInCheck(king.isWhite())) {
             return false;
         }
 
-        // Check if king passes through attacked square
         int midCol = fromCol + step;
         board[fromRow][midCol] = king;
         board[fromRow][fromCol] = null;
@@ -401,22 +331,18 @@ public class ChessGame {
         return true;
     }
 
-    /**
-     * Execute castling move
-     */
+     // castling
     private void executeCastling(int fromRow, int fromCol, int toRow, int toCol) {
         boolean isKingside = toCol > fromCol;
         int rookFromCol = isKingside ? 7 : 0;
         int rookToCol = isKingside ? toCol - 1 : toCol + 1;
 
-        // Move king
         Piece king = board[fromRow][fromCol];
         board[toRow][toCol] = king;
         board[fromRow][fromCol] = null;
         king.setPosition(toRow, toCol);
         ((King)king).moved();
 
-        // Move rook
         Piece rook = board[fromRow][rookFromCol];
         board[fromRow][rookToCol] = rook;
         board[fromRow][rookFromCol] = null;
@@ -425,21 +351,21 @@ public class ChessGame {
     }
 
     /**
-     * Print the current board state to console (for debugging)
+     *board state to console (for debugging)
      */
     public void printBoard() {
-        System.out.println("  a b c d e f g h"); // Column labels
+        System.out.println("  a b c d e f g h");
         System.out.println("  ---------------");
         for (int row = 0; row < 8; row++) {
-            System.out.print((8 - row) + "|"); // Row labels
+            System.out.print((8 - row) + "|"); 
             for (int col = 0; col < 8; col++) {
                 char symbol = (board[row][col] != null) ? board[row][col].getSymbol() : '-';
                 System.out.print(symbol + " ");
             }
-            System.out.println("|" + (8 - row)); // Row labels on the right
+            System.out.println("|" + (8 - row)); 
         }
         System.out.println("  ---------------");
-        System.out.println("  a b c d e f g h"); // Column labels
+        System.out.println("  a b c d e f g h"); 
     }
     
     // --- Getters for the GUI to access game state ---
@@ -469,7 +395,7 @@ public class ChessGame {
         this.selectedPieceCol = -1;
     }
 
-    // Add promotePawn method
+    //  promotePawn 
     public void promotePawn(int row, int col, String pieceType) {
         boolean isWhite = board[row][col].isWhite();
         switch (pieceType) {
@@ -486,11 +412,10 @@ public class ChessGame {
                 board[row][col] = new Knight(isWhite, row, col);
                 break;
         }
-        // Update the last move in moveHistory with the promotion type
+
         if (!moveHistory.isEmpty()) {
             Move lastMove = moveHistory.get(movePointer - 1);
             if (lastMove.promotionType != null && lastMove.promotionType.equals("Pending")) {
-                // Create a new Move with the correct promotion type and replace the last move
                 Move promotedMove = new Move(
                     lastMove.fromRow, lastMove.fromCol, lastMove.toRow, lastMove.toCol,
                     lastMove.movedPiece, lastMove.capturedPiece, pieceType, lastMove.fenBefore, lastMove.fenAfter
@@ -508,10 +433,9 @@ public class ChessGame {
         return blackCaptured;
     }
 
-    // Export the current board state as a FEN string
+    // board state to FEN string
     public String toFEN() {
         StringBuilder fen = new StringBuilder();
-        // 1. Piece placement
         for (int row = 0; row < 8; row++) {
             int empty = 0;
             for (int col = 0; col < 8; col++) {
@@ -546,13 +470,10 @@ public class ChessGame {
             if (empty > 0) fen.append(empty);
             if (row < 7) fen.append('/');
         }
-        // 2. Active color
         fen.append(' ');
         fen.append(isWhiteTurn ? 'w' : 'b');
-        // 3. Castling rights
         fen.append(' ');
         StringBuilder castling = new StringBuilder();
-        // Check for unmoved kings and rooks more reliably
         Piece whiteKing = getPieceAt(7, 4);
         Piece blackKing = getPieceAt(0, 4);
         
@@ -571,26 +492,20 @@ public class ChessGame {
         
         fen.append(castling.length() > 0 ? castling.toString() : "-");
         
-        // 4. En passant target square
         fen.append(' ');
         fen.append(enPassantTarget);
-        // 5. Halfmove clock (for 50-move rule)
         fen.append(' ');
         fen.append(halfmoveClock);
-        // 6. Fullmove number
         fen.append(' ');
         fen.append(fullmoveNumber);
         return fen.toString();
     }
 
-    // Undo the last move
     public boolean undoMove() {
         if (movePointer == 0) return false;
         Move lastMove = moveHistory.get(movePointer - 1);
-        // Restore board state from FEN before the move
         loadFEN(lastMove.fenBefore);
         movePointer--;
-        // Update captured pieces lists
         if (lastMove.capturedPiece != null) {
             if (lastMove.movedPiece.isWhite()) {
                 blackCaptured.remove(blackCaptured.size() - 1);
@@ -602,13 +517,11 @@ public class ChessGame {
         return true;
     }
 
-    // Redo the next move
     public boolean redoMove() {
         if (movePointer >= moveHistory.size()) return false;
         Move nextMove = moveHistory.get(movePointer);
         loadFEN(nextMove.fenAfter);
         movePointer++;
-        // Update captured pieces lists
         if (nextMove.capturedPiece != null) {
             if (nextMove.movedPiece.isWhite()) {
                 blackCaptured.add(nextMove.capturedPiece);
@@ -620,9 +533,7 @@ public class ChessGame {
         return true;
     }
 
-    // Load board state from FEN (simple version, only for undo/redo)
     private void loadFEN(String fen) {
-        // Only supports piece placement and turn for now
         String[] parts = fen.split(" ");
         String[] rows = parts[0].split("/");
         for (int row = 0; row < 8; row++) {
@@ -652,7 +563,7 @@ public class ChessGame {
         isWhiteTurn = parts[1].equals("w");
     }
 
-    // Getters for move history and pointer
+    // move history and pointer
     public java.util.List<Move> getMoveHistory() {
         return moveHistory;
     }
@@ -665,7 +576,7 @@ public class ChessGame {
         return moveHistory.get(movePointer - 1);
     }
 
-    // Helper: convert board coordinates to algebraic notation
+    // board coordinates to algebraic notation
     private String toAlgebraic(int row, int col) {
         char file = (char) ('a' + col);
         int rank = 8 - row;

@@ -19,7 +19,7 @@ public class GameModeDialogController {
 
     public void setStage(Stage stage) {
         this.stage = stage;
-        // Make window draggable by title bar
+        //draggable by title bar
         if (titleBar != null) {
             titleBar.setOnMousePressed(this::handleDragPressed);
             titleBar.setOnMouseDragged(this::handleDragDragged);

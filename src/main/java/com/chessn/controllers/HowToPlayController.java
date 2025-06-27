@@ -17,7 +17,6 @@ public class HowToPlayController {
     
     @FXML
     public void initialize() {
-        // Set up close button
         closeButton.setOnAction(e -> {
             if (stage != null) {
                 stage.close();

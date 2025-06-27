@@ -28,7 +28,7 @@ public class PlayerNamesController {
     
     private Stage stage;
     private PlayerNamesControllerCallback callback;
-    private boolean isFromGame = false;
+    private boolean isFromGame;
     
     public interface PlayerNamesControllerCallback {
         void onStartGame(String whitePlayerName, String blackPlayerName);

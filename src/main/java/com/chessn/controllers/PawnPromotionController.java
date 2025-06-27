@@ -1,7 +1,6 @@
 package com.chessn.controllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.paint.Color;
@@ -49,14 +48,12 @@ public class PawnPromotionController {
     }
     
     public void setPieceColor(boolean isWhite) {
-        // Update piece symbols based on color
         queenSymbol.setText(isWhite ? "♛" : "♕");
         rookSymbol.setText(isWhite ? "♜" : "♖");
         bishopSymbol.setText(isWhite ? "♝" : "♗");
         knightSymbol.setText(isWhite ? "♞" : "♘");
         
-        // Set color based on piece color
-        Color pieceColor = Color.web("391e10"); // Same color for both white and black pieces
+        Color pieceColor = Color.web("391e10"); 
         queenSymbol.setFill(pieceColor);
         bishopSymbol.setFill(pieceColor);
         rookSymbol.setFill(pieceColor);

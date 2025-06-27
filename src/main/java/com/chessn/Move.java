@@ -4,7 +4,7 @@ public class Move {
     public final int fromRow, fromCol, toRow, toCol;
     public final Piece movedPiece;
     public final Piece capturedPiece;
-    public final String promotionType; // e.g., "Queen", "Rook", etc. Null if not a promotion.
+    public final String promotionType; 
     public final String fenBefore;
     public final String fenAfter;
 

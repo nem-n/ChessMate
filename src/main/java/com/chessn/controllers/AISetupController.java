@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class AISetupController {
 

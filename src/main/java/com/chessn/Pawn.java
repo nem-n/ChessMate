@@ -14,20 +14,20 @@ public class Pawn extends Piece {
     
     @Override
     public boolean isValidMove(int toRow, int toCol) {
-        // Pawns can only move forward (direction depends on color)
+        // Pawns move forward (direction depends on color)
         int direction = isWhite ? -1 : 1;
         
-        // Check if moving in the correct direction
+        // Check if moving in correct direction
         if ((toRow - currentRow) * direction <= 0) {
             return false;
         }
         
-        // Must stay in the same column for normal moves
+        // stay in same column for normal moves
         if (toCol != currentCol) {
             return false;
         }
         
-        // Can move 2 squares on first move, 1 square otherwise
+        // can move 2 squares on first move
         int maxSquares = hasMoved ? 1 : 2;
         return Math.abs(toRow - currentRow) <= maxSquares;
     }
@@ -42,7 +42,7 @@ public class Pawn extends Piece {
         int targetRow = targetPiece.getRow();
         int targetCol = targetPiece.getCol();
         
-        // Pawns can only capture diagonally one square forward
+        // only capture diagonally
         return targetRow == currentRow + direction && 
                Math.abs(targetCol - currentCol) == 1;
     }
