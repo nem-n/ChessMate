@@ -1,8 +1,8 @@
-# ♟ChessMate — A Chess Game Application
+# ♟ChessMate — A Chess Game Application✨
 
 ChessMate is a modern, feature-rich chess game built with JavaFX. It offers a beautiful user interface and a powerful AI opponent powered by the Stockfish chess engine.
 
-## Features
+## Features✨
 
 - Play chess against another human (Pass n Play) or the Stockfish AI.
 - Modern, animated JavaFX interface with custom themes.
@@ -10,7 +10,7 @@ ChessMate is a modern, feature-rich chess game built with JavaFX. It offers a be
 - Move history with undo/redo and captured pieces display.
 - Endgame detection: victory and stalemate popups.
 
-## Installation
+## Installation✨
 
 1. **Clone the repository:**
 
@@ -47,7 +47,7 @@ ChessMate is a modern, feature-rich chess game built with JavaFX. It offers a be
    java -jar target/chessn-1.0-SNAPSHOT-shaded.jar
    ```
 
-## Usage
+## Usage✨
 
 1. **Launch the app** using Maven or the JAR file.
 2. **Choose your game mode**: play against another human or the AI.
@@ -55,7 +55,7 @@ ChessMate is a modern, feature-rich chess game built with JavaFX. It offers a be
 4. **Undo/redo moves** and view captured pieces as you play.
 5. **End the game** to see victory or stalemate popups.
 
-## Project Structure
+## Project Structure✨
 
 ```plaintext
 ChessMate/
@@ -71,14 +71,14 @@ ChessMate/
 │           └── images/    # UI images (e.g., logo)
 ```
 
-## Dependencies
+## Dependencies✨
 
 - JavaFX 24
 - Maven
 - Stockfish (external binary)
 - JDK 21 or newer
 
-## Notes
+## Notes✨
 
 - The Stockfish engine is required for AI play. Make sure `stockfish.exe` is in the correct location.
 - For other operating systems, download the appropriate Stockfish binary and update the path in `StockfishController.java` if needed.
